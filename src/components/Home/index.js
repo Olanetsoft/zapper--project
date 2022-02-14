@@ -10,6 +10,7 @@ const Container = styled.div`
   padding: 20px 0px 0 0px;
   flex: 8;
   position: relation;
+  overflow: auto;
   @media (max-width: 768px) {
     display: flex;
     padding: 20px;
@@ -39,7 +40,6 @@ const HeaderProfile = styled.div`
   border-radius: 50%;
   width: 150px;
   position: absolute;
-  top: 120px;
   border: 1px solid black;
   margin-left: 10px;
   &:hover {
