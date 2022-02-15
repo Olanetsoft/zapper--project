@@ -6,11 +6,11 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 
 const Container = styled.div`
-  border-right: 2px solid gray;
+  border-right: 2px solid grey;
   padding: 20px 0px 0 0px;
   flex: 8;
   position: relation;
-  overflow: auto;
+  overflow: scroll;
   @media (max-width: 768px) {
     display: flex;
     padding: 20px;
@@ -27,35 +27,40 @@ const HeaderBar = styled.div`
   );
   height: 150px;
 `;
+
 const HeaderProfile = styled.div`
-  z-index: 10;
+  z-index: 0;
   height: 150px;
   cursor: pointer;
   background-image: url("https://source.unsplash.com/random/150x150");
-  z-index: 10;
+  z-index: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   border-radius: 50%;
   width: 150px;
-  position: absolute;
+  /* position: fixed; */
+  border: 1px solid black;
+  margin-left: 10px;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: -100px 0;
+  position: relative;
   border: 1px solid black;
   margin-left: 10px;
   &:hover {
     background-color: red !important;
   }
 `;
+
 const ProfileWrapper = styled.div`
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  background-color: red;
+  display:flex:
+  position:relative;
 `;
 const ShareProfile = styled.div`
   display: -webkit-box;
