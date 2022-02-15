@@ -79,16 +79,18 @@ function LeftBar({ address }) {
         </SidebarBrand>
         <DropdownAccount>
           <Avater src={avater} alt="" />
-          <CoinAddress>
-            <div>{`${address.slice(0, 4)}...${address.slice(
-              address.length - 6
-            )}`}</div>
-            <div>
+          {address && (
+            <CoinAddress>
               <div>{`${address.slice(0, 4)}...${address.slice(
                 address.length - 6
               )}`}</div>
-            </div>
-          </CoinAddress>
+              <div>
+                <div>{`${address.slice(0, 4)}...${address.slice(
+                  address.length - 6
+                )}`}</div>
+              </div>
+            </CoinAddress>
+          )}
           <div>
             <ArrowDropDown />
           </div>
