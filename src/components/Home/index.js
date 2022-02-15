@@ -247,8 +247,8 @@ function Home({ address, nativeBalance, nftData, tokenData, transactionData }) {
             )}
             <AddressDetail>
               {address && (
-                <BottomAddress>{`${address.slice(0, 10)}...${address.slice(
-                  address.length - 10
+                <BottomAddress>{`${address.slice(0, 4)}...${address.slice(
+                  address.length - 8
                 )}`}</BottomAddress>
               )}
               <FooterIcon>

@@ -108,7 +108,7 @@ function App() {
 
   return (
     <Container>
-      <LeftBar value={value} />
+      <LeftBar address={address} />
       <Home
         address={address}
         nativeBalance={nativeBalance}

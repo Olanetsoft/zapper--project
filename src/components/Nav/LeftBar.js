@@ -67,7 +67,7 @@ const CoinAddress = styled.div`
   }
 `;
 const ArrowDropDown = styled(ArrowDropDownIcon)``;
-function LeftBar() {
+function LeftBar({ address }) {
   const [show, setShow] = useState(false);
 
   return (
@@ -80,9 +80,13 @@ function LeftBar() {
         <DropdownAccount>
           <Avater src={avater} alt="" />
           <CoinAddress>
-            <div>0xc1..26eb8</div>
+            <div>{`${address.slice(0, 4)}...${address.slice(
+              address.length - 6
+            )}`}</div>
             <div>
-              <div>0xc1..26eb8</div>
+              <div>{`${address.slice(0, 4)}...${address.slice(
+                address.length - 6
+              )}`}</div>
             </div>
           </CoinAddress>
           <div>
