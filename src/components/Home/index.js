@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import HomeTabSection from "./HomeTabSection";
+import HomeTabSection from "./Tab";
 import ReplyIcon from "@mui/icons-material/Reply";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
@@ -223,7 +223,7 @@ const ContainerWrapper = styled.div`
     flex-wrap: wrap;
   }
 `;
-function Home() {
+function Home({ address, nativeBalance, nftData, tokenData, transactionData }) {
   return (
     <Container>
       <ContainerWrapper>
@@ -240,9 +240,17 @@ function Home() {
 
         <AccountInfo>
           <AccountAddress>
-            <TopAddress>0xc128...6eb8</TopAddress>
+            {address && (
+              <TopAddress>{`${address.slice(0, 10)}...${address.slice(
+                address.length - 10
+              )}`}</TopAddress>
+            )}
             <AddressDetail>
-              <BottomAddress>0xc128...6eb8</BottomAddress>
+              {address && (
+                <BottomAddress>{`${address.slice(0, 10)}...${address.slice(
+                  address.length - 10
+                )}`}</BottomAddress>
+              )}
               <FooterIcon>
                 <AddressCopy></AddressCopy>
               </FooterIcon>
@@ -254,12 +262,20 @@ function Home() {
                 Net Worth
                 <NetWorthArrow />
               </NetWorthHeadWrapper>
-              <AmountBalance>$00.000</AmountBalance>
+              {nativeBalance && (
+                <AmountBalance>
+                  {(nativeBalance.balance / 1e18).toFixed(5)}
+                </AmountBalance>
+              )}
             </NetWorthHead>
           </AccountNetWorth>
         </AccountInfo>
         <TabSection>
-          <HomeTabSection />
+          <HomeTabSection
+            nftData={nftData}
+            tokenData={tokenData}
+            transactionData={transactionData}
+          />
         </TabSection>
       </ContainerWrapper>
     </Container>

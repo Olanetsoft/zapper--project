@@ -1,32 +1,34 @@
 import React from "react";
-import { Table, Tr } from "styled-table-component";
+import { Table, Tr, p } from "styled-table-component";
 
-const MyTable = (props) => (
-  <Table bordered>
-    <thead>
-      <tr>
-        <th scope="col">Header</th>
-        <th scope="col">Header</th>
-        <th scope="col">Header</th>
-      </tr>
-    </thead>
-    <tbody>
-      <Tr active>
-        <td>Body</td>
-        <td>Body</td>
-        <td>Body</td>
-      </Tr>
-      <Tr active>
-        <td>Body</td>
-        <td>Body</td>
-        <td>Body</td>
-      </Tr>
-      <Tr active>
-        <td>Body</td>
-        <td>Body</td>
-        <td>Body</td>
-      </Tr>
-    </tbody>
-  </Table>
-);
-export default MyTable;
+const TokenTable = ({ tokenData }) =>
+  tokenData ? (
+    <Table bordered>
+      <thead>
+        <tr>
+          <th scope="col">Token Name</th>
+          <th scope="col">Balance</th>
+          <th scope="col">Token ID</th>
+          <th scope="col">Symbol</th>
+        </tr>
+      </thead>
+      <tbody>
+        {tokenData.length !== 0 ? (
+          tokenData.result.map((element, i) => {
+            return (
+              <Tr key={i} active>
+                <td>{element.name}</td>
+                <td>{element.balance / ("1e" + element.decimals)}</td>
+                <td>{element.symbol}</td>
+              </Tr>
+            );
+          })
+        ) : (
+          <p>No Token(s) Found!</p>
+        )}
+      </tbody>
+    </Table>
+  ) : (
+    <p>Loading...</p>
+  );
+export default TokenTable;

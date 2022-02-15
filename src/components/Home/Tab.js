@@ -18,7 +18,7 @@ const TapHead = styled.div`
   padding: 10px 2px;
 `;
 
-export default function App() {
+export default function App({ nftData, tokenData, transactionData }) {
   return (
     <TabWrapper>
       <Tabs>
@@ -31,13 +31,13 @@ export default function App() {
         </TabList>
 
         <TabPanel>
-          <NFTTable />
+          <NFTTable nftData={nftData} />
         </TabPanel>
         <TabPanel>
-          <TokenTable />
+          <TokenTable tokenData={tokenData} />
         </TabPanel>
         <TabPanel>
-          <HistoryTable />
+          <HistoryTable transactionData={transactionData} />
         </TabPanel>
       </Tabs>
     </TabWrapper>
