@@ -23,6 +23,22 @@ const Container = styled.div`
   }
 `;
 
+const Button = styled.button`
+  width: 20rem;
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.95em 1em;
+  border: 2px solid royalblue;
+  border-radius: 30px;
+  color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+`;
+
 function App() {
   return (
     <Container>
