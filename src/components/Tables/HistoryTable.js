@@ -15,7 +15,7 @@ const HistoryTable = ({ transactionData }) =>
       </thead>
       <tbody>
         {transactionData.length !== 0 ? (
-          transactionData.result.map((element, i) => {
+          transactionData?.result?.map((element, i) => {
             return (
               <Tr key={i} active>
                 <td>{element.block_number}</td>

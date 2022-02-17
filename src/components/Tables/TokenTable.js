@@ -14,7 +14,7 @@ const TokenTable = ({ tokenData }) =>
       </thead>
       <tbody>
         {tokenData.length !== 0 ? (
-          tokenData.result.map((element, i) => {
+          tokenData?.result?.map((element, i) => {
             return (
               <Tr key={i} active>
                 <td>{element.name}</td>

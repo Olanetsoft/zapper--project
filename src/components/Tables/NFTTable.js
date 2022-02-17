@@ -14,7 +14,7 @@ const NFTTable = ({ nftData }) =>
       </thead>
       <tbody>
         {nftData.length !== 0 ? (
-          nftData.result.map((element, i) => {
+          nftData?.result?.map((element, i) => {
             return (
               <Tr key={i} active>
                 <td>{element.name}</td>
