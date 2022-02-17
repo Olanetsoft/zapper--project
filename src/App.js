@@ -71,14 +71,18 @@ function App() {
   // Native Balance API CALL
   const { fetch: nativeBalanceFetch, data: nativeBalance } =
     useMoralisWeb3ApiCall(Web3Api.account.getNativeBalance, {
-      chain: "mainnet",
+      chain: value,
     });
 
   // Transaction History API CALL
   const { fetch: transactionHistoryFetch, data: transactionData } =
     useMoralisWeb3ApiCall(Web3Api.account.getTransactions, {
-      chain: "mainnet",
+      chain: value,
     });
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
 
   useEffect(() => {
     //Call API every 5 seconds
@@ -108,7 +112,7 @@ function App() {
 
   return (
     <Container>
-      <LeftBar address={address} />
+      <LeftBar address={address} value={value} handleChange={handleChange} />
       <Home
         address={address}
         nativeBalance={nativeBalance}

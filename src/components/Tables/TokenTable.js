@@ -24,7 +24,9 @@ const TokenTable = ({ tokenData }) =>
             );
           })
         ) : (
-          <p>No Token(s) Found!</p>
+          <Tr>
+            <td>No Token(s) Found!</td>
+          </Tr>
         )}
       </tbody>
     </Table>

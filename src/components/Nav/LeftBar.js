@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import eth from "../../assets/img/eth.png";
-import btc from "../../assets/img/btc.png";
 import styled from "styled-components";
 import zapper from "../../assets/img/zapper.png";
 import avater from "../../assets/img/avater.png";
 import HomeIcon from "@mui/icons-material/Home";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
 import SendAndArchiveIcon from "@mui/icons-material/SendAndArchive";
 import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+
+import Chains from "../../utils/chains";
+
 const Container = styled.div`
   border-right: 2px solid gray;
   padding: 20px 20px 0 0;
@@ -67,9 +67,7 @@ const CoinAddress = styled.div`
   }
 `;
 const ArrowDropDown = styled(ArrowDropDownIcon)``;
-function LeftBar({ address }) {
-  const [show, setShow] = useState(false);
-
+function LeftBar({ address, value, handleChange }) {
   return (
     <Container>
       <Header>
@@ -149,133 +147,47 @@ function LeftBar({ address }) {
       </MenuWrapper>
 
       <LeftFooter>
-        <CoinMenu show={show} onClick={() => setShow(!show)}>
-          <MenuHead>Select Network</MenuHead>
-          <Cols>
-            <FirstCol>
-              {coinsData.map((item, index) => {
-                return (
-                  <li key={item.id}>
-                    <img src={item.img} alt={item.title} />
-                    <span>{item.title}</span>
-                  </li>
-                );
-              })}
-            </FirstCol>
-            <SecondCol>
-              {coinsData.map((item, index) => {
-                return (
-                  <li key={item.id}>
-                    <img src={item.img} alt={item.title} />
-                    <span>{item.title}</span>
-                  </li>
-                );
-              })}
-            </SecondCol>
-          </Cols>
-        </CoinMenu>
-        <Ethereum onClick={() => setShow(!show)}>
-          <EthImage src={eth} alt="" /> Ethereum <UpArrow />
-        </Ethereum>
+        <Select value={value} onChange={handleChange}>
+          {Chains.map((chain) => (
+            <Option key={chain.key} value={chain.value}>
+              {chain.name}
+            </Option>
+          ))}
+        </Select>
       </LeftFooter>
     </Container>
   );
 }
 export default LeftBar;
-const coinsData = [
-  { id: 1, img: btc, title: "Btc" },
-  { id: 2, img: btc, title: "Eth" },
-  { id: 3, img: btc, title: "Shib" },
-  { id: 4, img: btc, title: "Alt" },
-  { id: 5, img: btc, title: "Doge" },
-];
 
-const CoinMenu = styled.div`
-  display: ${(props) => (props.show ? "block" : "none")};
-  position: absolute;
-  transition: transform 0.3s ease-in;
-  background-color: #141a1e;
-  height: 400px;
-  width: 400px;
-  flex-direction: column;
-  border-radius: 10px;
-  padding: 10px;
-  z-index: 12;
-  margin: -370px 0 0 0;
-  box-shadow: 0px 0px 16px -10px whitesmoke;
-  -webkit-box-shadow: 0px 0px 16px -10px whitesmoke;
-  -moz-box-shadow: 0px 0px 16px -10px whitesmoke;
-`;
-const FirstCol = styled.ul`
-  list-style: none;
-
-  li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    padding: 10px;
-    border-radius: 5px;
-
-    &:hover {
-      cursor: pointer;
-      background-color: grey;
-    }
-    img {
-      background-color: inherit;
-      width: 30px;
-      height: 30px;
-    }
-    span {
-      background-color: inherit;
-      font-weight: 700;
-      font-size: 20px;
-    }
-  }
-`;
-const SecondCol = styled(FirstCol)``;
-const Cols = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-// const MenuHead = styled.div``;
-const MenuHead = styled.div`
-  display: flex;
-
-  transition: transform 0.3s ease-in;
-  flex-direction: row;
+const Select = styled.select`
   width: 100%;
-  height: 50px;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 5px;
-`;
-
-const UpArrow = styled(ArrowDropUpIcon)`
-  background-color: inherit;
-`;
-const Ethereum = styled.div`
-  display: flex;
-  cursor: pointer;
-  padding: 15px 10px;
-  align-items: center;
-  border-radius: 10px;
-  justify-content: space-between;
-  gap: 10px;
-  &:hover {
-    background-color: grey;
-    opacity: 0.6;
-    transition: ease-in-out 0.3s;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 0 10px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  background-color: #fff;
+  background-image: none;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: auto;
+  &:focus {
+    outline: none;
   }
 `;
 
-const EthImage = styled.img`
-  width: 30px;
-  height: 30px;
-  background-color: #617fea;
-  padding: 5px;
-  border-radius: 50%;
-  align-items: center;
+const Option = styled.option`
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  background-color: #fff;
+  background-image: none;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: auto;
 `;
 
 const LeftFooter = styled.div`

@@ -19,6 +19,7 @@ const TapHead = styled.div`
 `;
 
 export default function App({ nftData, tokenData, transactionData }) {
+  console.log("tokenData", tokenData);
   return (
     <TabWrapper>
       <Tabs>
